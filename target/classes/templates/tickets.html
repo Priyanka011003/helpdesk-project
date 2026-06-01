@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Tickets</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+body{
+    background:linear-gradient(135deg,#f1f5f9,#e2e8f0);
+    font-family:'Poppins',sans-serif;
+    margin:0;
+    padding:0;
+    min-height:100vh;
+}
+
+.main{
+    padding:40px;
+    max-width:1500px;
+    margin:auto;
+}
+
+/* HEADER */
+
+.header{
+    margin-bottom:25px;
+}
+
+.header h1{
+    font-size:48px;
+    font-weight:700;
+    color:#0f172a;
+    margin-bottom:10px;
+}
+
+.header p{
+    color:#64748b;
+    font-size:18px;
+}
+
+/* DASHBOARD BUTTON */
+
+.top-buttons{
+    margin:15px 0 25px;
+}
+
+.dashboard-btn{
+    display:inline-block;
+    padding:12px 22px;
+    border-radius:12px;
+    background:linear-gradient(135deg,#2563eb,#3b82f6);
+    color:#fff !important;
+    text-decoration:none;
+    font-weight:600;
+    font-size:15px;
+    box-shadow:0 5px 15px rgba(37,99,235,0.3);
+    transition:0.3s;
+}
+
+.dashboard-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 8px 20px rgba(37,99,235,0.4);
+}
+
+/* CARDS */
+
+.cards{
+    display:flex;
+    gap:25px;
+    margin-bottom:35px;
+}
+
+.card{
+    flex:1;
+    min-width:0;
+    padding:30px;
+    border-radius:24px;
+    color:white;
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 15px 30px rgba(0,0,0,0.12);
+    transition:all .3s ease;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+.card::before{
+    content:'';
+    position:absolute;
+    width:140px;
+    height:140px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.15);
+    top:-40px;
+    right:-40px;
+}
+
+.blue{
+    background:linear-gradient(135deg,#2563eb,#60a5fa);
+}
+
+.green{
+    background:linear-gradient(135deg,#16a34a,#4ade80);
+}
+
+.orange{
+    background:linear-gradient(135deg,#ea580c,#fb923c);
+}
+
+.card h3{
+    font-size:24px;
+    margin-bottom:15px;
+}
+
+.card p{
+    font-size:58px;
+    font-weight:700;
+    margin:0;
+}
+
+/* TABLE CONTAINER */
+
+.table-container{
+    background:white;
+    border-radius:25px;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+/* TABLE */
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+thead tr{
+    background:#0f172a;
+}
+
+th{
+    color:white;
+    padding:22px;
+    text-align:left;
+    font-size:17px;
+    font-weight:600;
+    letter-spacing:0.5px;
+}
+
+td{
+    padding:22px;
+    border-bottom:1px solid #e5e7eb;
+    font-size:16px;
+    color:#0f172a;
+}
+
+tbody tr{
+    transition:0.3s;
+}
+
+tbody tr:hover{
+    background:#f8fafc;
+}
+
+/* STATUS */
+
+.status{
+    padding:8px 18px;
+    border-radius:30px;
+    font-weight:600;
+    display:inline-block;
+}
+
+.pending{
+    background:#fef3c7;
+    color:#92400e;
+}
+
+.resolved{
+    background:#dcfce7;
+    color:#166534;
+}
+
+.open{
+    background:#dbeafe;
+    color:#1d4ed8;
+}
+
+/* ACTION BUTTONS */
+
+.action-buttons{
+    display:flex;
+    gap:12px;
+    align-items:center;
+}
+
+.action-btn{
+    width:48px;
+    height:48px;
+    border-radius:14px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-decoration:none;
+    color:white;
+    font-size:18px;
+    transition:all .3s ease;
+}
+
+.action-btn:hover{
+    transform:translateY(-4px);
+}
+
+.resolve{
+    background:linear-gradient(135deg,#16a34a,#22c55e);
+}
+
+.edit{
+    background:linear-gradient(135deg,#2563eb,#3b82f6);
+}
+
+.delete{
+    background:linear-gradient(135deg,#dc2626,#ef4444);
+}
+
+/* SCROLLBAR */
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#3b82f6;
+    border-radius:10px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:992px){
+
+    .cards{
+        flex-direction:column;
+    }
+
+    .header h1{
+        font-size:34px;
+    }
+
+    .main{
+        padding:20px;
+    }
+
+    .table-container{
+        overflow-x:auto;
+    }
+
+    table{
+        min-width:700px;
+    }
+}
+.success-message{
+
+    background:#dcfce7;
+
+    color:#166534;
+
+    padding:15px 20px;
+
+    border-radius:12px;
+
+    margin:20px;
+
+    font-weight:600;
+
+    border-left:5px solid #16a34a;
+
+    box-shadow:0 4px 10px rgba(0,0,0,.08);
+
+}
+.search-form{
+    display:flex;
+    gap:12px;
+    margin:25px 0;
+}
+
+.search-form input{
+    width:320px;
+    padding:12px 18px;
+    border:none;
+    border-radius:12px;
+    background:white;
+    box-shadow:0 4px 10px rgba(0,0,0,.08);
+    font-size:15px;
+    outline:none;
+}
+
+.search-form input:focus{
+    border:2px solid #2563eb;
+}
+
+.search-form button{
+    padding:12px 22px;
+    border:none;
+    border-radius:12px;
+    background:linear-gradient(135deg,#2563eb,#3b82f6);
+    color:white;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.search-form button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 5px 15px rgba(37,99,235,.3);
+}
+.no-record{
+
+    background:#fee2e2;
+    color:#991b1b;
+
+    padding:15px 20px;
+
+    border-radius:12px;
+
+    margin:20px 0;
+
+    font-weight:600;
+
+    border-left:5px solid #dc2626;
+
+    box-shadow:0 4px 10px rgba(0,0,0,.08);
+}
+</style>
+</head>
+
+<body>
+<div th:if="${success}"
+     class="success-message">
+
+    <span th:text="${success}"></span>
+
+</div>
+<div th:if="${message}"
+     class="no-record">
+
+    <span th:text="${message}"></span>
+
+</div>
+<div class="main">
+
+<h1>🎫 SmartDesk Ticket Management</h1>
+<div class="top-buttons">
+
+    <a href="/dashboard" class="dashboard-btn">
+        ← Back To Dashboard
+    </a>
+<p class="subtitle">Manage and track support tickets efficiently</p>
+<form action="/tickets/search" method="get" class="search-form">
+
+    <input type="text"
+           name="keyword"
+           placeholder="🔍 Search Ticket">
+
+    <button type="submit">
+        Search
+    </button>
+
+</form>
+<!-- CARDS -->
+
+
+
+<div class="cards">
+
+    <div class="card blue">
+
+        <h3>🎫 Total Tickets</h3>
+
+        <p th:text="${totalTickets}"></p>
+
+    </div>
+
+    <div class="card green">
+
+        <h3>✅ Resolved Tickets</h3>
+        <p th:text="${resolvedTickets}"></p>
+
+    </div>
+
+
+</div>
+    <div class="card orange">
+
+  <h3>⏳ Pending Tickets</h3>
+
+        <p th:text="${pendingTickets}"></p>
+
+    </div>
+
+</div>
+
+<!-- TABLE -->
+
+<table>
+
+<thead>
+<tr>
+<th>ID</th>
+<th>Issue</th>
+<th>Status</th>
+<th>Priority</th>
+<th>Action</th>
+</tr>
+</thead>
+
+
+
+<tr th:each="ticket : ${tickets}">
+<td th:text="${ticket.id}"></td>
+
+    <td th:text="${ticket.title}"></td>
+
+    <td>
+
+        <span class="status"
+              th:text="${ticket.status}"></span>
+
+    </td>
+
+    <td th:text="${ticket.priority}"></td>
+
+<td class="action-buttons">
+
+<a th:href="@{/resolve/{id}(id=${ticket.id})}"
+   class="action-btn resolve">
+   <i class="fa-solid fa-check"></i>
+</a>
+
+<a th:href="@{/edit-ticket/{id}(id=${ticket.id})}"
+   class="action-btn edit">
+   <i class="fa-solid fa-pen"></i>
+</a>
+
+<a th:href="@{/delete-ticket/{id}(id=${ticket.id})}"
+   onclick="return confirm('Delete this ticket?')"
+   class="action-btn delete">
+   <i class="fa-solid fa-trash"></i>
+</a>
+
+</td>
+
+</tr>
+
+
+
+</tbody>
+
+</table>
+
+
+
+    
+
+</div>
+
+</body>
+
+</html>

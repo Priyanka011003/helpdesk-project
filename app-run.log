@@ -1,0 +1,44 @@
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.0)
+
+2026-05-18T17:30:21.714+05:30  INFO 11204 --- [helpdesk] [           main] c.example.helpdesk.HelpdeskApplication   : Starting HelpdeskApplication using Java 21.0.10 with PID 11204 (C:\Users\Ni3\Desktop\company-level-it-support-system\target\classes started by Ni3 in C:\Users\Ni3\Desktop\company-level-it-support-system)
+2026-05-18T17:30:21.718+05:30  INFO 11204 --- [helpdesk] [           main] c.example.helpdesk.HelpdeskApplication   : No active profile set, falling back to 1 default profile: "default"
+2026-05-18T17:30:22.945+05:30  INFO 11204 --- [helpdesk] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-05-18T17:30:23.055+05:30  INFO 11204 --- [helpdesk] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 95 ms. Found 3 JPA repository interfaces.
+2026-05-18T17:30:24.029+05:30  INFO 11204 --- [helpdesk] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9092 (http)
+2026-05-18T17:30:24.045+05:30  INFO 11204 --- [helpdesk] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-05-18T17:30:24.046+05:30  INFO 11204 --- [helpdesk] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.24]
+2026-05-18T17:30:24.145+05:30  INFO 11204 --- [helpdesk] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-05-18T17:30:24.148+05:30  INFO 11204 --- [helpdesk] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2342 ms
+2026-05-18T17:30:24.428+05:30  INFO 11204 --- [helpdesk] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-05-18T17:30:24.566+05:30  INFO 11204 --- [helpdesk] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2026-05-18T17:30:24.643+05:30  INFO 11204 --- [helpdesk] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-05-18T17:30:25.240+05:30  INFO 11204 --- [helpdesk] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-05-18T17:30:25.280+05:30  INFO 11204 --- [helpdesk] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-05-18T17:30:25.666+05:30  INFO 11204 --- [helpdesk] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@3316527e
+2026-05-18T17:30:25.668+05:30  INFO 11204 --- [helpdesk] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-05-18T17:30:27.352+05:30  INFO 11204 --- [helpdesk] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-05-18T17:30:27.434+05:30  INFO 11204 --- [helpdesk] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-05-18T17:30:28.213+05:30  WARN 11204 --- [helpdesk] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-05-18T17:30:28.932+05:30  INFO 11204 --- [helpdesk] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9092 (http) with context path '/'
+2026-05-18T17:30:28.951+05:30  INFO 11204 --- [helpdesk] [           main] c.example.helpdesk.HelpdeskApplication   : Started HelpdeskApplication in 7.816 seconds (process running for 8.464)
+2026-05-18T17:30:44.465+05:30  INFO 11204 --- [helpdesk] [nio-9092-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-05-18T17:30:44.470+05:30  INFO 11204 --- [helpdesk] [nio-9092-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-05-18T17:30:44.473+05:30  INFO 11204 --- [helpdesk] [nio-9092-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+Hibernate: select u1_0.id,u1_0.password,u1_0.role,u1_0.username from users u1_0 where u1_0.username=?
+Hibernate: select u1_0.id,u1_0.password,u1_0.role,u1_0.username from users u1_0 where u1_0.username=?
+Hibernate: select t1_0.id,t1_0.description,t1_0.priority,t1_0.status,t1_0.title from ticket t1_0
+Hibernate: select u1_0.id,u1_0.password,u1_0.role,u1_0.username from users u1_0 where u1_0.username=?
+Hibernate: select t1_0.id,t1_0.description,t1_0.priority,t1_0.status,t1_0.title from ticket t1_0
+Hibernate: select u1_0.id,u1_0.password,u1_0.role,u1_0.username from users u1_0 where u1_0.username=?
+Hibernate: select t1_0.id,t1_0.description,t1_0.priority,t1_0.status,t1_0.title from ticket t1_0
+Hibernate: select u1_0.id,u1_0.password,u1_0.role,u1_0.username from users u1_0 where u1_0.username=?
+Hibernate: select t1_0.id,t1_0.description,t1_0.priority,t1_0.status,t1_0.title from ticket t1_0
+Hibernate: select u1_0.id,u1_0.password,u1_0.role,u1_0.username from users u1_0 where u1_0.username=?
+Hibernate: select t1_0.id,t1_0.description,t1_0.priority,t1_0.status,t1_0.title from ticket t1_0
