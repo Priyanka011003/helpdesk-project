@@ -1,0 +1,5 @@
+target/
+app-error.log app-run.log
+.classpath
+.project
+.settings/
